@@ -1,0 +1,20 @@
+<!-- extend base layout -->
+{% extends "base.html" %}
+
+{% block content %}
+<div class="blog">
+  <div class="conteudo">
+    <div class="post-info">
+      Posted by {{ post.author }}
+      <br>
+       {{ post.time }}
+    </div>
+    <h1><a href="/post/{{ post.id }}">{{ post.title }} </a></h1>
+    <hr>
+    <p>
+      {{ post.content}}
+    </p>
+  </div>
+</div>
+
+{% endblock %}

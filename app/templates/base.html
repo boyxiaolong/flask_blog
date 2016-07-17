@@ -1,0 +1,45 @@
+<html>
+  <head>
+    {% if title %}
+    <title>{{ title }} - Flask_Blog</title>
+    {% else %}
+    <title>Flask_Blog</title>
+    {% endif %}
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='base.css') }}">
+</head>
+<body>
+<header class="header">
+  <ul>
+    <li class="cor-1"></li>
+    <li class="cor-2"></li>
+    <li class="cor-3"></li>
+    <li class="cor-4"></li>
+    <li class="cor-5"></li>
+  </ul>
+  </header>
+<div class="wrap">
+    <nav class="menu">
+  <ul>
+    <li>
+      <a href="/home">Home</a>
+    </li>
+    <li>
+      <a href="/archive">Archive</a>
+    </li>
+    <li>
+      <a href="/aboutme">About me</a>
+    </li>
+  </ul>
+  </nav>
+    <aside class="sidebar">
+      <div class="widget">
+      <h2>AboutMe</h2>
+      <p>Hello, my name’s <b>Allen Zhao</b>.</p>
+      </div>
+
+  </aside>
+    {% block content %}{% endblock %}
+</div>
+</body>
+</html>
