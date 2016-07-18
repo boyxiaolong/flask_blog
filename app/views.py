@@ -1,11 +1,10 @@
 from app import app
-from flask import render_template
-from .models import Post
+from flask import render_template,request
+from .models import Post,UserInfo
+from flask.views import MethodView
+from .forms import UserRegisterForm
 
 @app.route('/')
-def index():
-    return render_template('welcome.html', title='welcome')
-
 @app.route('/home')
 def home():
     posts = Post.query.all()
@@ -25,3 +24,18 @@ def archive():
     print('archive')
     posts = Post.query.all()
     return render_template('archive.html', posts=posts)
+
+class LoginRequestView(MethodView):
+    def get(self):
+        return render_template('login.html', form=UserRegisterForm())
+
+    def post(self):
+        print('post')
+        form = UserRegisterForm(request.form)
+        if form.validate():
+            username = form.username.data
+            pwd = form.password.data
+            print(username, pwd)
+            user = UserInfo.query.filter_by(username=username).first()
+
+app.add_url_rule('/login', view_func=LoginRequestView.as_view('login'))

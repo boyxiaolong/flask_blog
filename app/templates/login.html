@@ -1,0 +1,13 @@
+<!-- extend base layout -->
+{% extends "base.html" %}
+{% from "_formhelpers.html" import render_field %}
+
+{% block content %}
+    <form class="pure-form" method="post" action="/login">
+        <fieldset>
+            <p>{{form.username.label}}{{form.username}}</p>
+            <p>{{form.password.label}}{{form.password}}</p>
+            {{form.submit}}
+        </fieldset>
+    </form>
+{% endblock %}
